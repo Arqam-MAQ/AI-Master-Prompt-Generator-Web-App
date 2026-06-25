@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Master-Prompt Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>✨ AI Prompt Master</h1>
+        <p>Design the perfect prompt for your AI generations.</p>
+
+        <div class="input-group">
+            <label>Subject / Scene Description</label>
+            <input type="text" id="subject" placeholder="e.g. A futuristic samurai walking in neon rain...">
+        </div>
+
+        <div class="input-group">
+            <label>Reference Image URL (For Character Consistency)</label>
+            <input type="text" id="refImage" placeholder="Paste image link here...">
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="strictFace" checked>
+            <label for="strictFace">Enable Strict Facial Consistency Mode</label>
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Art Style</label>
+                <select id="style">
+                    <option value="Photorealistic, 8k resolution, ultra-detailed">Photorealistic</option>
+                    <option value="Anime style, Studio Ghibli, 2D illustration">Anime / Ghibli</option>
+                    <option value="Cyberpunk aesthetic, neon, gritty">Cyberpunk</option>
+                    <option value="Cinematic concept art, trending on ArtStation">Concept Art</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Lighting / Camera</label>
+                <select id="lighting">
+                    <option value="Cinematic lighting, volumetric rays, 35mm lens">Cinematic</option>
+                    <option value="Golden hour natural lighting, soft shadows">Golden Hour</option>
+                    <option value="Neon glow, high contrast, rim lighting">Neon Rim Light</option>
+                    <option value="Studio lighting, softbox, 85mm portrait lens">Studio Portrait</option>
+                </select>
+            </div>
+        </div>
+
+        <button onclick="generatePrompt()" class="primary-btn">Generate Prompt</button>
+
+        <div class="output-section">
+            <textarea id="outputBox" rows="6" readonly placeholder="Your master prompt will appear here..."></textarea>
+            <button onclick="copyToClipboard()" class="secondary-btn">📋 Copy to Clipboard</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

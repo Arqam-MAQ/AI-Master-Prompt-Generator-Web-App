@@ -1,60 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Master-Prompt Generator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>✨ AI Prompt Master</h1>
+<div class="container">
+    <header>
+        <h1>AI Master-Prompt Generator 🎨</h1>
         <p>Design the perfect prompt for your AI generations.</p>
+    </header>
 
-        <div class="input-group">
-            <label>Subject / Scene Description</label>
-            <input type="text" id="subject" placeholder="e.g. A futuristic samurai walking in neon rain...">
-        </div>
+    <main>
+        <section class="presets-section">
+            <button id="presetAnime">🗡️ Shonen Anime Vibe</button>
+            <button id="presetSciFi">🦾 Sci-Fi Armor Vibe</button>
+            <button id="surpriseBtn">🎲 Surprise Me!</button>
+        </section>
 
-        <div class="input-group">
-            <label>Reference Image URL (For Character Consistency)</label>
-            <input type="text" id="refImage" placeholder="Paste image link here...">
-        </div>
-
-        <div class="checkbox-group">
-            <input type="checkbox" id="strictFace" checked>
-            <label for="strictFace">Enable Strict Facial Consistency Mode</label>
-        </div>
-
-        <div class="row">
-            <div class="input-group">
-                <label>Art Style</label>
-                <select id="style">
-                    <option value="Photorealistic, 8k resolution, ultra-detailed">Photorealistic</option>
-                    <option value="Anime style, Studio Ghibli, 2D illustration">Anime / Ghibli</option>
-                    <option value="Cyberpunk aesthetic, neon, gritty">Cyberpunk</option>
-                    <option value="Cinematic concept art, trending on ArtStation">Concept Art</option>
-                </select>
+        <section class="input-section">
+            
+            <div class="form-group">
+                <label for="subject">Main Subject / Scene:</label>
+                <input type="text" id="subject" placeholder="e.g. A rogue ninja with blazing red eyes...">
             </div>
 
-            <div class="input-group">
-                <label>Lighting / Camera</label>
-                <select id="lighting">
-                    <option value="Cinematic lighting, volumetric rays, 35mm lens">Cinematic</option>
-                    <option value="Golden hour natural lighting, soft shadows">Golden Hour</option>
-                    <option value="Neon glow, high contrast, rim lighting">Neon Rim Light</option>
-                    <option value="Studio lighting, softbox, 85mm portrait lens">Studio Portrait</option>
-                </select>
+            <div class="form-group">
+                <label for="refImageUrl">Reference Image URL (For Consistency):</label>
+                <input type="url" id="refImageUrl" placeholder="Paste image link here...">
             </div>
-        </div>
 
-        <button onclick="generatePrompt()" class="primary-btn">Generate Prompt</button>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="strictConsistency" checked>
+                <label for="strictConsistency">Enable Strict Facial Consistency Mode</label>
+            </div>
 
-        <div class="output-section">
-            <textarea id="outputBox" rows="6" readonly placeholder="Your master prompt will appear here..."></textarea>
-            <button onclick="copyToClipboard()" class="secondary-btn">📋 Copy to Clipboard</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+            <div class="grid-2-col">
+                <div class="form-group">
+                    <label for="artStyle">Art Style:</label>
+                    <select id="artStyle">
+                        <option value="Photorealistic, 8k resolution, highly detailed">Photorealistic</option>
+                        <option value="Cel-shaded anime style, vibrant studio animation">Anime / Cel-shaded</option>
+                        <option value="Cyberpunk style, neon aesthetic, futuristic">Cyberpunk</option>
+                        <option value="Dark fantasy, concept art, gritty">Dark Fantasy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lighting">Lighting:</label>
+                    <select id="lighting">
+                        <option value="Cinematic lighting, volumetric rays">Cinematic</option>
+                        <option value="Dramatic rim lighting, high contrast">Dramatic Rim Light</option>
+                        <option value="Neon lights, glowing energy effects">Neon / Energy Glow</option>
+                        <option value="Golden hour natural lighting">Golden Hour</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cameraAngle">Camera Angle:</label>
+                    <select id="cameraAngle">
+                        <option value="Eye-level medium shot">Medium Shot</option>
+                        <option value="Extreme close-up macro shot">Close-up</option>
+                        <option value="Low angle hero shot, imposing perspective">Low Angle (Hero)</option>
+                        <option value="Wide panoramic drone shot">Wide Shot</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="aspectRatio">Aspect Ratio:</label>
+                    <select id="aspectRatio">
+                        <option value="--ar 16:9">16:9 (Desktop/YouTube)</option>
+                        <option value="--ar 9:16">9:16 (Reels/Shorts)</option>
+                        <option value="--ar 1:1">1:1 (Square)</option>
+                        <option value="--ar 21:9">21:9 (Ultrawide)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="negativePrompt">Custom Negative Prompt (Exclude things):</label>
+                <input type="text" id="negativePrompt" placeholder="e.g. text, watermarks, red colors...">
+            </div>
+
+            <button id="generateBtn">Generate Master Prompt ✨</button>
+        </section>
+
+        <section class="output-section">
+            <h2>Your Final Prompt:</h2>
+            <textarea id="outputArea" rows="6" readonly placeholder="Your master prompt will appear here..."></textarea>
+            <button id="copyBtn">Copy to Clipboard 📋</button>
+            
+            <div class="history-section">
+                <h3>🕒 Recent Prompts</h3>
+                <ul id="historyList"></ul>
+            </div>
+        </section>
+    </main>
+</div>
